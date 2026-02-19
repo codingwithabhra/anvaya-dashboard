@@ -1,0 +1,15 @@
+body{
+    margin: 0;
+    background-color: rgb(245, 243, 243)!important;
+}
+
+ul{
+    padding-inline-start: 0;
+}
+
+ul li{
+    list-style: none;
+}
+Link{
+    text-decoration: none;
+}
