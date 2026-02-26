@@ -1,0 +1,101 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { useLeadContext } from "../contexts/useLeadContext";
+import { useFilterContext } from "../contexts/filterContext";
+
+const Filterleadbuttons = () => {
+  const { agents } = useLeadContext();
+  const { filter, setFilter } = useFilterContext();
+  return (
+    <>
+      <div className="newLeads bg-white px-3 py-4 rounded shadow-sm">
+        <div className="container">
+          <h2 className="text-secondary">Filter Buttons</h2>
+          <hr />
+          <div className="container">
+            <div className="py-2 d-flex flex-wrap align-items-center gap-3">
+              <h4>Filters : </h4>
+              <div className="buttons d-flex gap-3">
+                {/* STATUS FILTER */}
+                <select
+                  className="form-select btn btn-primary"
+                  value={filter.status}
+                  onChange={(e) => {
+                    setFilter({ ...filter, status: e.target.value });
+                  }}
+                >
+                  <option value="">Status</option>
+                  <option value="new">New</option>
+                  <option value="contacted">Contacted</option>
+                  <option value="qualified">Qualified</option>
+                  <option value="proposal sent">Proposal Sent</option>
+                  <option value="closed">Closed</option>
+                </select>
+                {/* AGENT FILTER */}
+                <select
+                  className="form-select border-success"
+                  value={filter.agent}
+                  onChange={(e) => {
+                    setFilter({ ...filter, agent: e.target.value });
+                  }}
+                >
+                  <option value="">Sales Agent</option>
+                  {agents.map((agent) => (
+                    <option value={agent._id} key={agent._id}>
+                      {agent.name}
+                    </option>
+                  ))} 
+                </select>
+              </div>
+            </div>
+            <hr style={{ opacity: "0.15" }} />
+            <div className="container py-3">
+              <div className="row align-items-center gy-4">
+                {/* Title */}
+                <div className="col-12 col-md-2">
+                  <h4 className="mb-0 text-center text-md-start">Sort By :</h4>
+                </div>
+
+                {/* Controls */}
+                <div className="col-12 col-md-10">
+                  <div className="d-flex flex-column flex-md-row gap-3 justify-content-center justify-content-md-end">
+                    {/* Priority Dropdown */}
+                    <select
+                      aria-label="Priority filter"
+                      className="form-select border-success d-block mx-auto mx-md-0"
+                      style={{ maxWidth: "200px" }}
+                      value={filter.priority}
+                      onChange={(e) =>
+                        setFilter({ ...filter, priority: e.target.value })
+                      }
+                    >
+                      <option value="">Priority</option>
+                      <option value="high">High</option>
+                      <option value="medium">Medium</option>
+                      <option value="low">Low</option>
+                    </select>
+
+                    {/* Time to Close Button */}
+                    <button className="btn btn-outline-danger w-100 w-md-auto">
+                      Time to Close
+                    </button>
+
+                    {/* Add Lead Button */}
+                    <Link
+                      to="/leads/addnewlead"
+                      className="btn btn-warning w-100 w-md-auto"
+                    >
+                      Add New Lead
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Filterleadbuttons;

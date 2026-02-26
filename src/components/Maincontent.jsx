@@ -1,37 +1,52 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLeadContext } from "../contexts/useLeadContext";
 
 const Maincontent = () => {
+
+  const { leads } = useLeadContext();
+
   return (
     <>
       <h2 className="text-secondary">Dashboard</h2>
       <div className="content-area">
         {/* NEW LEADS */}
-        <div className="newLeads bg-white p-3">
-          {/* CARD 1 */}
-          <div className="card mb-3" style={{ "max-width": "300px" }}>
-            <div className="row g-0">
-              <div className="col-md-4">
-                <img
-                  src="https://placehold.co/150 "
-                  className="img-fluid rounded-start"
-                  alt="..."
-                />
-              </div>
-              <div className="col-md-8">
-                <div className="card-body">
-                  <h5 className="card-title">Amit Mahanta</h5>
-                  <p className="card-text">
-                    Source: Website, <span>status: New</span>
-                  </p>
-                </div>
-              </div>
+        <div className="newLeads bg-white px-3 py-4 rounded shadow-sm">
+          <div className="container">
+            <div className="row g-4">
+              {leads?.map((lead) => (
+                  <Link className="col-lg-4 col-md-6 col-sm-12 text-decoration-none" key={lead._id} to={`/leads/leaddetails/${lead._id}`}>
+                    <div className="card h-100 shadow-sm border-0 rounded-3">
+                      <div className="card-body">
+                        <h5 className="card-title fw-bold text-dark">
+                          {lead.name}
+                        </h5>
+
+                        <div className="d-flex gap-3">
+                          <p className="card-text mb-1">
+                            <span className="fw-semibold text-primary">
+                              Source:
+                            </span>{" "}
+                            <span className="text-secondary">Website</span>
+                          </p>
+
+                          <p className="card-text">
+                            <span className="fw-semibold text-danger">
+                              Status:
+                            </span>{" "}
+                            <span className="badge bg-success">New</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+              ))}
             </div>
           </div>
         </div>
 
         {/* LEAD STATUS */}
-        <div className="leadStatus bg-white my-3 p-3">
+        <div className="leadStatus bg-white my-3 p-3 rounded shadow-sm">
           <h2 className="text-secondary">Lead Status </h2>
           <hr />
           <div className="status row g-3 py-3">
@@ -84,7 +99,7 @@ const Maincontent = () => {
         </div>
 
         {/* QUICK FILTERS */}
-        <div className="leadStatus bg-white mB-3 p-3">
+        <div className="leadStatus bg-white mB-3 p-3 rounded shadow-sm">
           <h2 className="text-secondary">Quick Filters</h2>
           <hr />
           {/* BUTTONS */}
@@ -115,7 +130,10 @@ const Maincontent = () => {
             </div>
             {/* btn -add new */}
             <div className="col-12 col-sm-4">
-              <Link className="btn-new d-flex align-items-center text-decoration-none">
+              <Link
+                to="/leads/addnewlead"
+                className="btn-new d-flex align-items-center text-decoration-none"
+              >
                 <img
                   src="/Images/add (1).png"
                   alt="New"

@@ -1,12 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Leads from './pages/Leads.jsx';
-import Sales from './pages/Sales.jsx';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Leads from "./pages/Leads.jsx";
+import Sales from "./pages/Sales.jsx";
+import Addnewlead from "./pages/Addnewlead.jsx";
+import { ToastContainer } from "react-toastify";
+import Leaddetails from "./pages/Leaddetails.jsx";
+import { LeadsProvider } from "./contexts/useLeadContext.jsx";
+import { FilterProvider } from "./contexts/filterContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,10 +26,34 @@ const router = createBrowserRouter([
     path: "/sales",
     element: <Sales />,
   },
-])
+  {
+    path: "/leads/addnewlead",
+    element: <Addnewlead />,
+  },
+  {
+    path: "/leads/leaddetails/:leadId",
+    element: <Leaddetails />,
+  },
+]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router = {router} />
+    <FilterProvider>
+      <LeadsProvider>
+        <RouterProvider router={router} />
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+      </LeadsProvider>
+    </FilterProvider>
   </StrictMode>,
-)
+);
