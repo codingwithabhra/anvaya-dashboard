@@ -1,13 +1,12 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import ReportContent from "../components/ReportContent";
 
-const Reports = () => {
+const LeadsByStatus = () => {
   return (
     <>
       <header className="bg-white py-3 position-relative shadow-sm">
         <h1 className="fs-2 text-center text-secondary m-0">
-          Anvaya CRM Reports
+          Leads By Status
         </h1>
 
         {/* Toggle button (only visible on small screens) */}
@@ -53,7 +52,7 @@ const Reports = () => {
           <div className="col-12 col-lg-9">
             <div className="">
               <div>
-                <ReportContent />
+                
               </div>
             </div>
           </div>
@@ -63,4 +62,4 @@ const Reports = () => {
   );
 };
 
-export default Reports;
+export default LeadsByStatus;

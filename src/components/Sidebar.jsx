@@ -12,7 +12,13 @@ const Sidebar = () => {
                     <Link className="navbar-brand" to="/leads">Leads</Link>
                 </li>
                 <li>
-                    <Link className="navbar-brand" to="/sales">Sales</Link>
+                    <Link className="navbar-brand" to="/leads/sales">Sales</Link>
+                </li>
+                <li>
+                    <Link className="navbar-brand" to="/leads/agents">Agents</Link>
+                </li>
+                <li>
+                    <Link className="navbar-brand" to="/leads/reports">Reports</Link>
                 </li>
             </ul>
         </nav>

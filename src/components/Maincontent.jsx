@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useLeadContext } from "../contexts/useLeadContext";
 
 const Maincontent = () => {
-
   const { leads } = useLeadContext();
 
   return (
@@ -15,31 +14,35 @@ const Maincontent = () => {
           <div className="container">
             <div className="row g-4">
               {leads?.map((lead) => (
-                  <Link className="col-lg-4 col-md-6 col-sm-12 text-decoration-none" key={lead._id} to={`/leads/leaddetails/${lead._id}`}>
-                    <div className="card h-100 shadow-sm border-0 rounded-3">
-                      <div className="card-body">
-                        <h5 className="card-title fw-bold text-dark">
-                          {lead.name}
-                        </h5>
+                <Link
+                  className="col-lg-4 col-md-6 col-sm-12 text-decoration-none"
+                  key={lead._id}
+                  to={`/leads/leaddetails/${lead._id}`}
+                >
+                  <div className="card h-100 shadow-sm border-0 rounded-3">
+                    <div className="card-body">
+                      <h5 className="card-title fw-bold text-dark">
+                        {lead.name}
+                      </h5>
 
-                        <div className="d-flex gap-3">
-                          <p className="card-text mb-1">
-                            <span className="fw-semibold text-primary">
-                              Source:
-                            </span>{" "}
-                            <span className="text-secondary">Website</span>
-                          </p>
+                      <div className="d-flex gap-3">
+                        <p className="card-text mb-1">
+                          <span className="fw-semibold text-primary">
+                            Source:
+                          </span>{" "}
+                          <span className="text-secondary">Website</span>
+                        </p>
 
-                          <p className="card-text">
-                            <span className="fw-semibold text-danger">
-                              Status:
-                            </span>{" "}
-                            <span className="badge bg-success">New</span>
-                          </p>
-                        </div>
+                        <p className="card-text">
+                          <span className="fw-semibold text-danger">
+                            Status:
+                          </span>{" "}
+                          <span className="badge bg-success">New</span>
+                        </p>
                       </div>
                     </div>
-                  </Link>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -51,7 +54,7 @@ const Maincontent = () => {
           <hr />
           <div className="status row g-3 py-3">
             {/* status --- new */}
-            <div className="col-12 col-md-4">
+            <Link className="col-12 col-md-4" to="/leads/leadybystatus">
               <div className="status-new d-flex align-items-center justify-content-between p-3 border rounded">
                 <div className="d-flex align-items-center flex-nowrap">
                   <img
@@ -60,13 +63,14 @@ const Maincontent = () => {
                     style={{ width: "25px" }}
                     className="me-2"
                   />
+
                   <h5 className="mb-0">New :</h5>
                 </div>
                 <p className="fs-5 mb-0">5 Leads</p>
               </div>
-            </div>
+            </Link>
             {/* status --- contacted */}
-            <div className="col-12 col-md-4">
+            <Link className="col-12 col-md-4" to="/leads/leadybystatus">
               <div className="status-contacted d-flex align-items-center justify-content-between p-3 border rounded">
                 <div className="d-flex align-items-center flex-nowrap">
                   <img
@@ -79,9 +83,9 @@ const Maincontent = () => {
                 </div>
                 <p className="fs-5 mb-0">2 Leads</p>
               </div>
-            </div>
+            </Link>
             {/* status --- qualified */}
-            <div className="col-12 col-md-4">
+            <Link className="col-12 col-md-4" to="/leads/leadybystatus">
               <div className="status-qualified d-flex align-items-center justify-content-between p-3 border rounded">
                 <div className="d-flex align-items-center flex-nowrap">
                   <img
@@ -94,7 +98,7 @@ const Maincontent = () => {
                 </div>
                 <p className="fs-5 mb-0">1 Leads</p>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
 

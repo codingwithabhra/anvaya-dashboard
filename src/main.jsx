@@ -12,6 +12,10 @@ import { ToastContainer } from "react-toastify";
 import Leaddetails from "./pages/Leaddetails.jsx";
 import { LeadsProvider } from "./contexts/useLeadContext.jsx";
 import { FilterProvider } from "./contexts/filterContext.jsx";
+import AgentManagement from "./pages/AgentManagement.jsx";
+import AddAgents from "./pages/AddAgents.jsx";
+import Reports from "./pages/Reports.jsx";
+import LeadsByStatus from "./pages/LeadsByStatus.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +27,7 @@ const router = createBrowserRouter([
     element: <Leads />,
   },
   {
-    path: "/sales",
+    path: "/leads/sales",
     element: <Sales />,
   },
   {
@@ -33,6 +37,22 @@ const router = createBrowserRouter([
   {
     path: "/leads/leaddetails/:leadId",
     element: <Leaddetails />,
+  },
+  {
+    path: "/leads/agents",
+    element: <AgentManagement />,
+  },
+  {
+    path: "/leads/agents/addagent",
+    element: <AddAgents />,
+  },
+  {
+    path: "/leads/reports",
+    element: <Reports />,
+  },
+  {
+    path: "/leads/leadybystatus",
+    element: <LeadsByStatus />,
   },
 ]);
 

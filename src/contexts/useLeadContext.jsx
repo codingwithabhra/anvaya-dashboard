@@ -12,6 +12,7 @@ export const LeadsProvider = ({ children }) => {
   const { leadId } = useParams();
   const findLead = leads?.find((lead) => lead._id === leadId);
   console.log("this is from lead details page-- ", findLead);
+  console.log("this is from lead details page-- ", agents);
 
   //getting all the lead info
   useEffect(() => {
@@ -45,9 +46,6 @@ export const LeadsProvider = ({ children }) => {
     fetchAgents();
   }, []);
 
-  //finding agent from lead-DB inside Agents-DB
-
-
   //updating lead info
   const updateLead = async (id, updatedData) => {
     try {
@@ -55,10 +53,12 @@ export const LeadsProvider = ({ children }) => {
         `https://leads-peach-rho.vercel.app/leads/${id}`,
         updatedData,
       );
-      const updatedLead = response.data.data;
-      console.log("this is response data - ",response.data);
+      const updatedLead = response.data.updateLeadData;
+      console.log("this is response data - ", response.data);
       setLeads((prev) =>
-        prev.map((lead) => lead._id === id ? { ...lead, ...updatedLead } : lead),
+        prev.map((lead) =>
+          lead._id === id ? { ...lead, ...updatedLead } : lead,
+        ),
       );
 
       toast.success("Lead updated successfully");
@@ -71,7 +71,7 @@ export const LeadsProvider = ({ children }) => {
   };
 
   return (
-    <LeadContext.Provider value={{ leads, findLead, agents, updateLead,  }}>
+    <LeadContext.Provider value={{ leads, findLead, agents, updateLead }}>
       {children}
     </LeadContext.Provider>
   );

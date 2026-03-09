@@ -1,14 +1,12 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import ReportContent from "../components/ReportContent";
+import AgentList from "../components/AgentList";
 
-const Reports = () => {
+const AagentManagement = () => {
   return (
     <>
       <header className="bg-white py-3 position-relative shadow-sm">
-        <h1 className="fs-2 text-center text-secondary m-0">
-          Anvaya CRM Reports
-        </h1>
+        <h1 className="fs-2 text-center text-secondary m-0">Sales Agent Management</h1>
 
         {/* Toggle button (only visible on small screens) */}
         <button
@@ -53,7 +51,7 @@ const Reports = () => {
           <div className="col-12 col-lg-9">
             <div className="">
               <div>
-                <ReportContent />
+                <AgentList />
               </div>
             </div>
           </div>
@@ -63,4 +61,4 @@ const Reports = () => {
   );
 };
 
-export default Reports;
+export default AagentManagement;
