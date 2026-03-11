@@ -1,15 +1,38 @@
-body{
+body {
     margin: 0;
-    background-color: rgb(245, 243, 243)!important;
+    background-color: rgb(245, 243, 243) !important;
 }
 
-ul{
+ul {
     padding-inline-start: 0;
 }
 
-ul li{
+ul li {
     list-style: none;
 }
-Link{
+
+Link {
     text-decoration: none;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-icon {
+    width: 24px;
+}
+
+.sidebar-link:hover {
+    background-color: white;
+    color: #191970;
+    transform: translateX(6px);
 }

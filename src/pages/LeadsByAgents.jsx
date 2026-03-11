@@ -1,13 +1,13 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import AgentList from "../components/AgentList";
+import LeadsByAgentContent from "../components/LeadsByAgentContent";
 import Sidebar2 from "../components/Sidebar2";
 
-const AagentManagement = () => {
+const LeadsByAgents = () => {
   return (
     <>
       <header className="bg-white py-3 position-relative shadow-sm">
-        <h1 className="fs-2 text-center text-secondary m-0">Sales Agent Management</h1>
+        <h1 className="fs-2 text-center text-secondary m-0">Leads By Agents</h1>
 
         {/* Toggle button (only visible on small screens) */}
         <button
@@ -34,7 +34,7 @@ const AagentManagement = () => {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <Sidebar />
+          <Sidebar2 />
         </div>
       </div>
 
@@ -44,7 +44,7 @@ const AagentManagement = () => {
           {/* Sidebar (Desktop only) */}
           <div className="col-lg-3 d-none d-lg-block">
             <div className="h-100 rounded shadow-sm">
-              <Sidebar2 />
+              <Sidebar />
             </div>
           </div>
 
@@ -52,14 +52,14 @@ const AagentManagement = () => {
           <div className="col-12 col-lg-9">
             <div className="">
               <div>
-                <AgentList />
+                <LeadsByAgentContent />
               </div>
             </div>
           </div>
         </div>
-      </main>
+      </main> 
     </>
   );
 };
 
-export default AagentManagement;
+export default LeadsByAgents;

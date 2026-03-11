@@ -1,10 +1,10 @@
 import React from 'react'
 import { Pie } from "react-chartjs-2";
 
-const PieChart = ({data}) => {
+const PieChart = ({data, options}) => {
   return (
     <div>
-      {data && <Pie data={data}  redraw />}
+      {data && <Pie data={data} options={options}  />}
     </div>
   )
 }

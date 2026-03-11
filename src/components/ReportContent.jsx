@@ -6,12 +6,13 @@ import {
   BarElement,
   Tooltip,
   Legend,
+  LinearScale,
 } from "chart.js";
 import { useLeadContext } from "../contexts/useLeadContext";
 import PieChart from "./PieChart";
 import BarChart from "./BarChart";
 
-ChartJS.register(ArcElement, CategoryScale, BarElement, Tooltip, Legend);
+ChartJS.register(ArcElement, CategoryScale, BarElement, LinearScale, Tooltip, Legend);
 
 const ReportContent = () => {
   const { leads, agents } = useLeadContext();

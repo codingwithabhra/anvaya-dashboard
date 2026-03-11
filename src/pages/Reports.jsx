@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import ReportContent from "../components/ReportContent";
+import Sidebar2 from "../components/Sidebar2";
 
 const Reports = () => {
   return (
@@ -44,8 +45,8 @@ const Reports = () => {
         <div className="row g-3">
           {/* Sidebar (Desktop only) */}
           <div className="col-lg-3 d-none d-lg-block">
-            <div className="bg-white p-3 h-100 rounded shadow-sm">
-              <Sidebar />
+            <div className="h-100 rounded shadow-sm">
+              <Sidebar2 />
             </div>
           </div>
 

@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Leads from "./pages/Leads.jsx";
-import Sales from "./pages/Sales.jsx";
 import Addnewlead from "./pages/Addnewlead.jsx";
 import { ToastContainer } from "react-toastify";
 import Leaddetails from "./pages/Leaddetails.jsx";
@@ -16,6 +15,7 @@ import AgentManagement from "./pages/AgentManagement.jsx";
 import AddAgents from "./pages/AddAgents.jsx";
 import Reports from "./pages/Reports.jsx";
 import LeadsByStatus from "./pages/LeadsByStatus.jsx";
+import LeadsByAgents from "./pages/LeadsByAgents.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,10 +25,6 @@ const router = createBrowserRouter([
   {
     path: "/leads",
     element: <Leads />,
-  },
-  {
-    path: "/leads/sales",
-    element: <Sales />,
   },
   {
     path: "/leads/addnewlead",
@@ -51,8 +47,12 @@ const router = createBrowserRouter([
     element: <Reports />,
   },
   {
-    path: "/leads/leadybystatus",
+    path: "/leads/leadbystatus",
     element: <LeadsByStatus />,
+  },
+  {
+    path: "/leads/agents/leadsbyagent/:agentId",
+    element: <LeadsByAgents />,
   },
 ]);
 

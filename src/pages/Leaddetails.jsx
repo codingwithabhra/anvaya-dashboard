@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useLeadContext } from "../contexts/useLeadContext";
 import Sidebar from "../components/Sidebar";
 import LeadDetails from "../components/LeadDetails";
+import Sidebar2 from "../components/Sidebar2";
 
 const Leaddetails = () => {
   const { leads } = useLeadContext();
@@ -50,8 +51,8 @@ const Leaddetails = () => {
             <div className="row g-3">
               {/* Sidebar (Desktop only) */}
               <div className="col-lg-3 d-none d-lg-block">
-                <div className="bg-white p-3 h-100 rounded shadow-sm">
-                  <Sidebar />
+                <div className="h-100 rounded shadow-sm">
+                  <Sidebar2 />
                 </div>
               </div>
 
