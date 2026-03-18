@@ -10,11 +10,11 @@ function App() {
     <>
       {/* Header */}
       <header className="bg-white py-3 position-relative">
-        <h1 className="fs-2 fw-bolder text-center m-0">Anvaya CRM Dashboard</h1>
+        <h1 className="fs-3 fw-bolder text-center m-0">Anvaya CRM Dashboard</h1>
 
         {/* Toggle button (only visible on small screens) */}
         <button
-          className="btn btn-primary d-lg-none position-absolute top-50 start-0 translate-middle-y ms-3"
+          className="btn btn-primary d-lg-none position-absolute top-100 end-0 mx-2 my-2"
           data-bs-toggle="offcanvas"
           data-bs-target="#mobileSidebar"
         >
@@ -27,12 +27,12 @@ function App() {
         className="offcanvas offcanvas-start d-lg-none"
         tabIndex="-1"
         id="mobileSidebar"
+        style={{backgroundColor: "#003153"}}
       >
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title">Menu</h5>
           <button
             type="button"
-            className="btn-close"
+            className="btn-close bg-white"
             data-bs-dismiss="offcanvas"
           ></button>
         </div>
@@ -46,7 +46,7 @@ function App() {
         <div className="row g-3">
           {/* Sidebar (Desktop only) */}
           <div className="col-lg-3 d-none d-lg-block">
-            <div className="h-100 rounded shadow-sm">
+            <div className="rounded shadow-sm">
               <Sidebar />
             </div>
           </div>

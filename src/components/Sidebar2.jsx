@@ -8,7 +8,7 @@ const Sidebar2 = () => {
               className="sidebar d-flex flex-column p-4 text-white rounded"
               style={{
                 minHeight: "100vh",
-                background: "#191970",
+                background: "#003153",
               }}
             >
               <h4 className="text-center fw-bold fs-3 mb-5">CRM Panel</h4>

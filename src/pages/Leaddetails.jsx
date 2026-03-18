@@ -4,6 +4,7 @@ import { useLeadContext } from "../contexts/useLeadContext";
 import Sidebar from "../components/Sidebar";
 import LeadDetails from "../components/LeadDetails";
 import Sidebar2 from "../components/Sidebar2";
+import Comments from "../components/Comments";
 
 const Leaddetails = () => {
   const { leads } = useLeadContext();
@@ -32,17 +33,17 @@ const Leaddetails = () => {
             className="offcanvas offcanvas-start d-lg-none"
             tabIndex="-1"
             id="mobileSidebar"
+            style={{ backgroundColor: "#003153" }}
           >
             <div className="offcanvas-header">
-              <h5 className="offcanvas-title">Menu</h5>
               <button
                 type="button"
-                className="btn-close"
+                className="btn-close bg-white"
                 data-bs-dismiss="offcanvas"
               ></button>
             </div>
             <div className="offcanvas-body">
-              <Sidebar />
+              <Sidebar2 />
             </div>
           </div>
 
@@ -60,6 +61,9 @@ const Leaddetails = () => {
               <div className="col-12 col-lg-9">
                 <div className="">
                   <LeadDetails />
+                </div>
+                <div className="my-3">
+                  <Comments leadId={findLead._id} />
                 </div>
               </div>
             </div>

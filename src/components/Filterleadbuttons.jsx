@@ -12,7 +12,7 @@ const Filterleadbuttons = () => {
         <div className="container">
           <h2 className="text-secondary">Filter Buttons</h2>
           <hr />
-          <div className="container">
+          <div className="container rounded p-3" style={{backgroundColor: "#003153", color: "white"}}>
             <div className="py-3">
               <div className="row align-items-center g-3">
                 {/* Filters Title */}
@@ -22,43 +22,64 @@ const Filterleadbuttons = () => {
 
                 {/* Controls */}
                 <div className="col-12 col-md-10">
-                  <div className="d-flex flex-column flex-md-row gap-3">
+                  <div className="row g-3">
                     {/* Status Filter */}
-                    <select
-                      className="form-select shadow-sm border-primary"
-                      value={filter.status}
-                      onChange={(e) =>
-                        setFilter({ ...filter, status: e.target.value })
-                      }
-                    >
-                      <option value="">Filter by Status</option>
-                      <option value="new">New</option>
-                      <option value="contacted">Contacted</option>
-                      <option value="qualified">Qualified</option>
-                      <option value="proposal sent">Proposal Sent</option>
-                      <option value="closed">Closed</option>
-                    </select>
+                    <div className="col-12 col-md-4">
+                      <select
+                        className="form-select"
+                        value={filter.status}
+                        onChange={(e) =>
+                          setFilter({ ...filter, status: e.target.value })
+                        }
+                      >
+                        <option value="">Filter by Status</option>
+                        <option value="new">New</option>
+                        <option value="contacted">Contacted</option>
+                        <option value="qualified">Qualified</option>
+                        <option value="proposal sent">Proposal Sent</option>
+                        <option value="closed">Closed</option>
+                      </select>
+                    </div>
 
                     {/* Agent Filter */}
-                    <select
-                      className="form-select shadow-sm border-warning"
-                      value={filter.agent}
-                      onChange={(e) =>
-                        setFilter({ ...filter, agent: e.target.value })
-                      }
-                    >
-                      <option value="">Filter by Agent</option>
-                      {agents.map((agent) => (
-                        <option value={agent._id} key={agent._id}>
-                          {agent.name}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="col-12 col-md-4">
+                      <select
+                        className="form-select"
+                        value={filter.agent}
+                        onChange={(e) =>
+                          setFilter({ ...filter, agent: e.target.value })
+                        }
+                      >
+                        <option value="">Filter by Agent</option>
+                        {agents.map((agent) => (
+                          <option value={agent._id} key={agent._id}>
+                            {agent.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {/* Clear Filter Button */}
+                    <div className="col-12 col-md-4">
+                      <button
+                        className="btn btn-primary w-100"
+                        onClick={() =>
+                          setFilter({
+                            priority: "",
+                            agent: "",
+                            status: "",
+                            timetoclose: "",
+                          })
+                        }
+                      >
+                        Clear Filters
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <hr style={{ opacity: "0.15" }} />
+            <hr style={{ opacity: "0.55" }} />
             <div className="py-3">
               {/* SORT BY */}
               <div className="row align-items-center gy-4">
@@ -69,35 +90,49 @@ const Filterleadbuttons = () => {
 
                 {/* Controls */}
                 <div className="col-12 col-md-10">
-                  <div className="d-flex flex-column flex-md-row gap-3">
-                    {/* Priority Dropdown */}
-                    <select
-                      aria-label="Priority filter"
-                      className="form-select border-success d-block mx-auto mx-md-0"
-                      style={{ maxWidth: "200px" }}
-                      value={filter.priority}
-                      onChange={(e) =>
-                        setFilter({ ...filter, priority: e.target.value })
-                      }
-                    >
-                      <option value="">Priority</option>
-                      <option value="high">High</option>
-                      <option value="medium">Medium</option>
-                      <option value="low">Low</option>
-                    </select>
+                  <div className="row g-3">
+                    {/* Priority */}
+                    <div className="col-12 col-md-4">
+                      <select
+                        aria-label="Priority filter"
+                        className="form-select w-100"
+                        value={filter.priority}
+                        onChange={(e) =>
+                          setFilter({ ...filter, priority: e.target.value })
+                        }
+                      >
+                        <option value="">Priority</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                      </select>
+                    </div>
 
-                    {/* Time to Close Button */}
-                    <button className="btn btn-outline-danger w-100 w-md-auto">
-                      Time to Close
-                    </button>
+                    {/* Time to Close */}
+                    <div className="col-12 col-md-4">
+                      <select
+                        className="form-select w-100"
+                        value={filter.timetoclose}
+                        onChange={(e) =>
+                          setFilter({ ...filter, timetoclose: e.target.value })
+                        }
+                      >
+                        <option value="">Time to Close</option>
+                        <option value="0-3">0 - 3 Days</option>
+                        <option value="4-10">4 - 10 Days</option>
+                        <option value="10+">More than 10 Days</option>
+                      </select>
+                    </div>
 
-                    {/* Add Lead Button */}
-                    <Link
-                      to="/leads/addnewlead"
-                      className="btn btn-warning w-100 w-md-auto"
-                    >
-                      Add New Lead
-                    </Link>
+                    {/* Add Lead */}
+                    <div className="col-12 col-md-4">
+                      <Link
+                        to="/leads/addnewlead"
+                        className="btn btn-warning w-100"
+                      >
+                        Add New Lead
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

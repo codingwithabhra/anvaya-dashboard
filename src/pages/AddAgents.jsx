@@ -43,7 +43,7 @@ const AddAgents = () => {
         console.log("Agent Created:", response.data);
 
         // Reset form after success
-        setAgentName("");
+        setName("");
         setEmail("");
 
         toast.success("Agent Created Successfully");

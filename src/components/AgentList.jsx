@@ -60,7 +60,7 @@ const AgentList = () => {
               )}
             </div>
 
-            <Link to="/leads/agents/addagent">
+            <Link to="/leads/agents/addagent" className="text-decoration-none">
               <button className="btn btn-success d-block m-auto my-4 fw-bold fs-6">
                 Add New Agent
               </button>

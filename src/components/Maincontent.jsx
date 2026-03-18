@@ -35,7 +35,7 @@ const Maincontent = () => {
                   key={lead._id}
                   to={`/leads/leaddetails/${lead._id}`}
                 >
-                  <div className="card h-100 shadow-sm border-0 rounded-3">
+                  <div className="card h-100 shadow-sm border-0 rounded-3" style={{backgroundColor: "#F0F8FF"}}>
                     <div className="card-body">
                       <h5 className="card-title fw-bold text-dark">
                         {lead.name}
@@ -68,119 +68,26 @@ const Maincontent = () => {
         <div className="leadStatus bg-white my-3 p-3 rounded shadow-sm">
           <h2 className="text-secondary">Lead Status </h2>
           <hr />
-          <div className="status row g-3 py-3">
+          <div className="status row g-3 py-2">
             {statusList.map((status) => (
-              <Link
+              <div
                 key={status}
                 className="col-12 col-md-4 text-decoration-none"
-                to="/leads/leadbystatus"
               >
                 <div className="d-flex align-items-center justify-content-between p-3 border rounded">
-                  <h5 className="mb-0 text-dark">{status} :</h5>
+                  <h5 className="mb-0 text-primary">{status} :</h5>
 
                   <p className="fs-5 mb-0">
                     {statusCounts[status.toLowerCase()] || 0} Leads
                   </p>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
-
-          {/* status --- new
-            <Link
-              className="col-12 col-md-4 text-decoration-none"
-              to="/leads/leadybystatus"
-            >
-              <div className="status-new d-flex align-items-center justify-content-between p-3 border rounded">
-                <div className="d-flex align-items-center flex-nowrap">
-                  <img
-                    src="/Images/right-arrow.png"
-                    alt="arrow"
-                    style={{ width: "25px" }}
-                    className="me-2"
-                  />
-
-                  <h5 className="mb-0 text-dark">New :</h5>
-                </div>
-                <p className="fs-5 mb-0">5 Leads</p>
-              </div>
-            </Link>
-            {/* status --- contacted */}
-          {/* <Link
-              className="col-12 col-md-4 text-decoration-none"
-              to="/leads/leadybystatus"
-            >
-              <div className="status-contacted d-flex align-items-center justify-content-between p-3 border rounded">
-                <div className="d-flex align-items-center flex-nowrap">
-                  <img
-                    src="/Images/arrow.png"
-                    alt="arrow"
-                    style={{ width: "25px" }}
-                    className="me-2"
-                  />
-                  <h5 className="mb-0 text-dark">Contacted :</h5>
-                </div>
-                <p className="fs-5 mb-0">2 Leads</p>
-              </div>
-            </Link> */}
-          {/* status --- qualified */}
-          {/* <Link
-              className="col-12 col-md-4 text-decoration-none"
-              to="/leads/leadybystatus"
-            >
-              <div className="status-qualified d-flex align-items-center justify-content-between p-3 border rounded">
-                <div className="d-flex align-items-center flex-nowrap">
-                  <img
-                    src="/Images/right-arrow (1).png"
-                    alt="arrow"
-                    style={{ width: "25px" }}
-                    className="me-2"
-                  />
-                  <h5 className="mb-0 text-dark">Qualified :</h5>
-                </div>
-                <p className="fs-5 mb-0">1 Leads</p>
-              </div>
-            </Link> */}
-          {/* status --- proposal sent */}
-          {/* <Link
-              className="col-12 col-md-4 text-decoration-none"
-              to="/leads/leadybystatus"
-            >
-              <div className="status-qualified d-flex align-items-center justify-content-between p-3 border rounded">
-                <div className="d-flex align-items-center flex-nowrap">
-                  <img
-                    src="/Images/right-arrow (1).png"
-                    alt="arrow"
-                    style={{ width: "25px" }}
-                    className="me-2"
-                  />
-                  <h5 className="mb-0 text-dark">Proposal Sent :</h5>
-                </div>
-                <p className="fs-5 mb-0">0 Leads</p>
-              </div>
-            </Link> */}
-          {/* status --- closed */}
-          {/* <Link
-              className="col-12 col-md-4 text-decoration-none"
-              to="/leads/leadybystatus"
-            >
-              <div className="status-qualified d-flex align-items-center justify-content-between p-3 border rounded">
-                <div className="d-flex align-items-center flex-nowrap">
-                  <img
-                    src="/Images/right-arrow (1).png"
-                    alt="arrow"
-                    style={{ width: "25px" }}
-                    className="me-2"
-                  />
-                  <h5 className="mb-0 text-dark">Closed :</h5>
-                </div>
-                <p className="fs-5 mb-0">8 Leads</p>
-              </div>
-            </Link>  */}
         </div>
 
         {/* QUICK FILTERS */}
-        <div className="leadStatus bg-white mB-3 p-3 rounded shadow-sm">
+        <div className="leadStatus bg-white p-3 rounded shadow-sm">
           <h2 className="text-secondary">Quick Filters</h2>
           <hr />
           {/* BUTTONS */}
@@ -201,7 +108,7 @@ const Maincontent = () => {
             <div className="col-12 col-sm-4">
               <Link className="btn-new d-flex align-items-center text-decoration-none">
                 <img
-                  src="/Images/button.png"
+                  src="/Images/help-desk.png"
                   alt="New"
                   style={{ width: "25px" }}
                   className="me-2"

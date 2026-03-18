@@ -16,6 +16,7 @@ import AddAgents from "./pages/AddAgents.jsx";
 import Reports from "./pages/Reports.jsx";
 import LeadsByStatus from "./pages/LeadsByStatus.jsx";
 import LeadsByAgents from "./pages/LeadsByAgents.jsx";
+import Settings from "./pages/Settings.jsx";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: "/leads/agents/leadsbyagent/:agentId",
     element: <LeadsByAgents />,
+  },
+  {
+    path: "/settings",
+    element: <Settings />,
   },
 ]);
 

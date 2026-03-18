@@ -24,12 +24,12 @@ const LeadsByAgents = () => {
         className="offcanvas offcanvas-start d-lg-none"
         tabIndex="-1"
         id="mobileSidebar"
+        style={{ backgroundColor: "#003153" }}
       >
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title">Menu</h5>
           <button
             type="button"
-            className="btn-close"
+            className="btn-close bg-white"
             data-bs-dismiss="offcanvas"
           ></button>
         </div>
@@ -44,7 +44,7 @@ const LeadsByAgents = () => {
           {/* Sidebar (Desktop only) */}
           <div className="col-lg-3 d-none d-lg-block">
             <div className="h-100 rounded shadow-sm">
-              <Sidebar />
+              <Sidebar2 />
             </div>
           </div>
 
@@ -57,7 +57,7 @@ const LeadsByAgents = () => {
             </div>
           </div>
         </div>
-      </main> 
+      </main>
     </>
   );
 };

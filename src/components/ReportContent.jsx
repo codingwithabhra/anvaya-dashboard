@@ -11,12 +11,20 @@ import {
 import { useLeadContext } from "../contexts/useLeadContext";
 import PieChart from "./PieChart";
 import BarChart from "./BarChart";
+import PieChart2 from "./PieChart2";
 
-ChartJS.register(ArcElement, CategoryScale, BarElement, LinearScale, Tooltip, Legend);
+ChartJS.register(
+  ArcElement,
+  CategoryScale,
+  BarElement,
+  LinearScale,
+  Tooltip,
+  Legend,
+);
 
 const ReportContent = () => {
   const { leads, agents } = useLeadContext();
-  const piedata = {
+  const piedata2 = {
     labels: ["New", "Contacted", "Qualified", "Proposal Sent", "Closed"],
     datasets: [
       {
@@ -67,6 +75,28 @@ const ReportContent = () => {
     ],
   };
 
+  const piedata = {
+    labels: ["In Pipeline", "Closed"],
+    datasets: [
+      {
+        label: "# of Votes",
+        data: [
+          leads.filter((lead) => lead.status !== "closed").length,
+          leads.filter((lead) => lead.status === "closed").length,
+        ],
+        backgroundColor: [
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+        ],
+        borderColor: [
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -85,49 +115,73 @@ const ReportContent = () => {
     <>
       <div className="content-area">
         <h2 className="text-secondary pb-2">Report Overview</h2>
-        <div className="bg-white px-3 py-4 rounded shadow-sm">
-          <div className="container">
-            <h4>Total Leads closed and in Pipeline :</h4>
+
+        {/* PIE CHART */}
+        <div className="px-3 py-4 mb-4 rounded shadow-sm" style={{ backgroundColor: "rgba(255, 255, 0, 0.2)" }}>
+          <div className="container text-center">
+            <h4 className="mb-3">Total Leads Closed and in Pipeline :</h4>
+
             <div
-              className="chart"
+              className="chart mx-auto my-2"
               style={{
-                position: "relative",
                 width: "100%",
-                maxWidth: "500px",
-                height: "350px",
-                margin: "auto",
+                maxWidth: "420px",
               }}
             >
               <PieChart
                 data={piedata}
-                className="py-3"
-                options={options}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: true,
+                  ...options,
+                }}
               />
             </div>
           </div>
         </div>
 
-        <div className="bg-white my-2 px-3 py-4 rounded shadow-sm">
-          <div className="container">
-            <h4>Leads Closed by Sales Agent: :</h4>
+        {/* BAR CHART */}
+        <div className="my-2 px-3 py-4 mb-4 rounded shadow-sm" style={{ backgroundColor: "rgba(251, 206, 177, 0.3)" }}>
+          <div className="container text-center">
+            <h4 className="mb-3">Leads Closed by Sales Agent: :</h4>
             <div
-              className="chart"
+              className="chart mx-auto my-2"
               style={{
                 position: "relative",
                 width: "100%",
-                maxWidth: "500px",
-                height: "350px",
-                margin: "auto",
+                maxWidth: "700px",
+                height: "auto",
               }}
             >
-              <BarChart
-                data={bardata}
-                className="py-3"
-                options={options}
+              <BarChart data={bardata} className="py-3" options={options} style={{color: "black"}} />
+            </div>
+          </div>
+        </div>
+
+        {/* PIE CHART 2 */}
+        <div className="px-3 py-4 mb-3 rounded shadow-sm" style={{ backgroundColor: "rgba(224, 255, 255, 0.8)" }}>
+          <div className="container text-center">
+            <h4 className="mb-3">Lead Status Distribution :</h4>
+
+            <div
+              className="chart mx-auto my-2"
+              style={{
+                width: "100%",
+                maxWidth: "420px",
+              }}
+            >
+              <PieChart2
+                data={piedata2}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: true,
+                  ...options,
+                }}
               />
             </div>
           </div>
         </div>
+
       </div>
     </>
   );

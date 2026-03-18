@@ -7,9 +7,7 @@ const LeadsByStatus = () => {
   return (
     <>
       <header className="bg-white py-3 position-relative shadow-sm">
-        <h1 className="fs-2 text-center text-secondary m-0">
-          Leads By Status
-        </h1>
+        <h1 className="fs-2 text-center text-dark m-0">Leads By Status</h1>
 
         {/* Toggle button (only visible on small screens) */}
         <button
@@ -26,12 +24,12 @@ const LeadsByStatus = () => {
         className="offcanvas offcanvas-start d-lg-none"
         tabIndex="-1"
         id="mobileSidebar"
+        style={{ backgroundColor: "#003153" }}
       >
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title">Menu</h5>
           <button
             type="button"
-            className="btn-close"
+            className="btn-close bg-white"
             data-bs-dismiss="offcanvas"
           ></button>
         </div>

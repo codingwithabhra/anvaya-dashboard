@@ -35,10 +35,9 @@ export const LeadsProvider = ({ children }) => {
     const fetchAgents = async () => {
       try {
         const response = await axios.get(
-          "https://agent-omega-rosy.vercel.app/agent",
+          "https://agent-three-pi.vercel.app/agent",
         );
         setAgents(response.data);
-        // console.log("Agents are --", response);
       } catch (error) {
         console.log("Error fetching agents -- ", error);
       }
@@ -70,8 +69,38 @@ export const LeadsProvider = ({ children }) => {
     }
   };
 
+  //delete lead
+  const deleteLead = async (id) => {
+    try {
+      await axios.delete(`https://leads-peach-rho.vercel.app/leads/${id}`);
+
+      //remove deleted lead from UI
+      setLeads((prev) => prev.filter((lead) => lead._id !== id));
+
+      toast.success("Lead deleted successfully");
+    } catch (error) {
+      console.log("Error deleting lead: ", error);
+      toast.error("Failed to delete lead");
+    }
+  };
+
+  //delete agent
+  const deleteAgent = async (id) => {
+    try {
+      await axios.delete(`https://agent-three-pi.vercel.app/agent/${id}`);
+
+      //remove deleted agent from UI
+      setAgents((prev) => prev.filter((agent) => agent._id !== id));
+
+      toast.success("Agent deleted successfully");
+    } catch (error) {
+      console.log("Error deleting agent: ", error);
+      toast.error("Failed to delete agent");
+    }
+  };
+
   return (
-    <LeadContext.Provider value={{ leads, findLead, agents, updateLead }}>
+    <LeadContext.Provider value={{ leads, findLead, agents, updateLead, deleteLead, deleteAgent, setLeads  }}>
       {children}
     </LeadContext.Provider>
   );

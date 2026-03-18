@@ -34,9 +34,9 @@ const LeadsByAgentContent = () => {
       <h2 className="text-secondary pb-2">Lead List by Agent</h2>
       <div className="content-area">
         <div className="newLeads bg-white px-3 py-4 rounded shadow-sm">
-          <h4 className="fs-3">
+          <h4 className="fs-5 fw-bold">
             Sales Agent :{" "}
-            <span className="text-danger fs-4">
+            <span className="text-white fs-5 badge bg-success">
               {agentDetails.name} ({agentDetails.email})
             </span>
           </h4>
@@ -80,57 +80,79 @@ const LeadsByAgentContent = () => {
           </div>
           <hr />
 
-          {/* Filters Section */}
           <div
-            className="row align-items-center mb-3 py-2 rounded"
-            style={{ backgroundColor: "#f8f9fa" }}
+            className="px-4 py-3 rounded shadow-sm"
+            style={{ backgroundColor: "#003153", color: "white" }}
           >
-            <div className="col-12 col-md-2 fw-bold fs-5 mb-2 mb-md-0">
-              Filters:
+            {/* Filters Section */}
+            <div
+              className="row align-items-center mb-3 py-2 rounded"
+              // style={{ backgroundColor: "#f8f9fa" }}
+            >
+              <div className="col-12 col-md-2 fw-bold fs-5 mb-2 mb-md-0">
+                Filters:
+              </div>
+
+              {/* Status Filter */}
+              <div className="col-12 col-md-4 mb-2 mb-md-0">
+                <select className="form-select">
+                  <option value="">Status</option>
+                  <option value="new">New</option>
+                  <option value="contacted">Contacted</option>
+                  <option value="qualified">Qualified</option>
+                </select>
+              </div>
+
+              {/* Priority Filter */}
+              <div className="col-12 col-md-4">
+                <select
+                  className="form-select"
+                  value={filter.priority}
+                  onChange={(e) =>
+                    setFilter({ ...filter, priority: e.target.value })
+                  }
+                >
+                  <option value="">Priority</option>
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
             </div>
 
-            {/* Status Filter */}
-            <div className="col-12 col-md-4 mb-2 mb-md-0">
-              <select className="form-select border-warning shadow-sm">
-                <option value="">Status</option>
-                <option value="new">New</option>
-                <option value="contacted">Contacted</option>
-                <option value="qualified">Qualified</option>
-              </select>
-            </div>
+            {/* Sort Section */}
+            <div
+              className="row align-items-center py-2 rounded"
+              // style={{ backgroundColor: "#eef6ff" }}
+            >
+              <div className="col-12 col-md-2 fw-bold fs-5 mb-2 mb-md-0">
+                Sort By:
+              </div>
 
-            {/* Priority Filter */}
-            <div className="col-12 col-md-4">
-              <select
-                className="form-select border-warning shadow-sm"
-                value={filter.priority}
-                onChange={(e) =>
-                  setFilter({ ...filter, priority: e.target.value })
-                }
-              >
-                <option value="">Priority</option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-              </select>
-            </div>
-          </div>
+              <div className="col-12 col-md-4">
+                <select className="form-select">
+                  <option value="">Time to Close</option>
+                  <option value="lowToHigh">Low → High</option>
+                  <option value="highToLow">High → Low</option>
+                </select>
+              </div>
 
-          {/* Sort Section */}
-          <div
-            className="row align-items-center py-2 rounded"
-            style={{ backgroundColor: "#eef6ff" }}
-          >
-            <div className="col-12 col-md-2 fw-bold fs-5 mb-2 mb-md-0">
-              Sort By:
-            </div>
-
-            <div className="col-12 col-md-4">
-              <select className="form-select border-success shadow-sm">
-                <option value="">Time to Close</option>
-                <option value="lowToHigh">Low → High</option>
-                <option value="highToLow">High → Low</option>
-              </select>
+              {/* Clear Filter Button */}
+              <div className="col-12 col-md-4">
+                <button
+                  className="btn btn-primary w-100"
+                  onClick={() =>
+                    setFilter({
+                      priority: "",
+                      agent: "",
+                      status: "",
+                      timetoclose: "",
+                    })
+                  }
+                >
+                  Clear Filters
+                </button>
+              </div>
             </div>
           </div>
         </div>

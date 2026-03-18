@@ -7,8 +7,8 @@ const LeadDetails = () => {
   const { leads, agents, updateLead } = useLeadContext();
   const { leadId } = useParams();
   const findLead = leads?.find((lead) => lead._id === leadId);
-  console.log("this is from lead details component-- ", findLead);
-  console.log("this is agent list from lead details component -- ", agents);
+  // console.log("this is from lead details component-- ", findLead);
+  // console.log("this is agent list from lead details component -- ", agents);
 
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({});
@@ -32,10 +32,6 @@ const LeadDetails = () => {
     setIsEditing(false);
   };
 
-  // const findSalesAgent = agents?.find(
-  //   (agent) => agent._id === findLead.salesAgent,
-  // );
-
   return (
     <>
       <div className="container bg-white p-4 rounded shadow-sm">
@@ -43,7 +39,7 @@ const LeadDetails = () => {
         <hr />
         {findLead && (
           <div className="container">
-            <div className="row justify-content-center">
+            <div className="row justify-content-center shadow-sm" style={{backgroundColor: "#F0F8FF"}}>
               <div className="col-md-6">
                 {" "}
                 {/* Controls width & centers horizontally */}

@@ -7,13 +7,13 @@ const Reports = () => {
   return (
     <>
       <header className="bg-white py-3 position-relative shadow-sm">
-        <h1 className="fs-2 text-center text-secondary m-0">
+        <h1 className="fs-2 text-center text-dark m-0">
           Anvaya CRM Reports
         </h1>
 
         {/* Toggle button (only visible on small screens) */}
         <button
-          className="btn btn-primary d-lg-none position-absolute top-50 start-0 translate-middle-y ms-3"
+          className="btn btn-primary d-lg-none position-absolute top-100 end-0 mx-2 my-2"
           data-bs-toggle="offcanvas"
           data-bs-target="#mobileSidebar"
         >
@@ -26,17 +26,17 @@ const Reports = () => {
         className="offcanvas offcanvas-start d-lg-none"
         tabIndex="-1"
         id="mobileSidebar"
+        style={{ backgroundColor: "#003153" }}
       >
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title">Menu</h5>
           <button
             type="button"
-            className="btn-close"
+            className="btn-close bg-white"
             data-bs-dismiss="offcanvas"
           ></button>
         </div>
         <div className="offcanvas-body">
-          <Sidebar />
+          <Sidebar2 />
         </div>
       </div>
 

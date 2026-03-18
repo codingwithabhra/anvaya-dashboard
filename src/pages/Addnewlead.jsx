@@ -2,8 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useLeadContext } from "../contexts/useLeadContext";
 
 const Addnewlead = () => {
+  const { setLeads } = useLeadContext();
+
   const [name, setName] = useState("");
   const [source, setSource] = useState("");
   const [salesAgent, setSalesAgent] = useState("");
@@ -18,7 +21,7 @@ const Addnewlead = () => {
     const fetchagents = async () => {
       try {
         const response = await axios.get(
-          "https://agent-omega-rosy.vercel.app/agent",
+          "https://agent-three-pi.vercel.app/agent",
         );
         setAgents(response.data);
         console.log("Responses are --", response);
@@ -55,6 +58,13 @@ const Addnewlead = () => {
             tags,
           },
         );
+        
+        // Refetch fresh data
+        const updatedLeads = await axios.get(
+          "https://leads-peach-rho.vercel.app/leads",
+        );
+
+        setLeads(updatedLeads.data);
 
         console.log("Lead Created:", response.data);
 

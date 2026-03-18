@@ -20,7 +20,22 @@ const Leadoverview = () => {
       filter.priority === "" ||
       lead.priority?.toLowerCase() === filter.priority.toLowerCase();
 
-    return statusMatch && agentMatch && priorityMatch;
+    // TIME TO CLOSE FILTER
+    let timeMatch = true;
+
+    if (filter.timetoclose === "0-3") {
+      timeMatch = lead.timetoclose <= 3;
+    }
+
+    if (filter.timetoclose === "4-10") {
+      timeMatch = lead.timetoclose >= 4 && lead.timetoclose <= 10;
+    }
+
+    if (filter.timetoclose === "10+") {
+      timeMatch = lead.timetoclose > 10;
+    }
+
+    return statusMatch && agentMatch && priorityMatch && timeMatch;
   });
   console.log("this is from lead overview page -- ", filteredLeads);
   console.log("this is from lead overview page agents -- ", agents);
@@ -32,7 +47,7 @@ const Leadoverview = () => {
           <div className="container">
             <h2 className="text-secondary">Lead Overview</h2>
             <hr />
-            <div className="row g-4">
+            <div className="row g-4" style={{minHeight: "200px"}}>
               {filteredLeads.length === 0 ? (
                 <p className="text-center mt-4 fs-5 text-danger">
                   No result found
@@ -49,36 +64,27 @@ const Leadoverview = () => {
                       key={lead._id}
                       to={`/leads/leaddetails/${lead._id}`}
                     >
-                      <div className="card h-100 shadow-sm border-0.3 rounded-3">
-                        <div className="card-body d-flex flex-nowrap align-items-center justify-content-between">
-                          <h5
-                            className="card-title text-dark mb-0"
-                            style={{ fontSize: "1.7rem" }}
-                          >
-                            {lead.name}
-                          </h5>
+                      <div
+                        className="card-body p-3 rounded shadow-sm g-3"
+                        style={{ backgroundColor: "#E6E6FA" }}
+                      >
+                        <div className="row text-black align-items-center">
+                          <div className="col-12 col-md-4">
+                            <h5 className="mb-0">{lead.name}</h5>
+                          </div>
 
-                          <p
-                            className="card-text mb-0"
-                            style={{ fontSize: "1.3rem" }}
-                          >
-                            <span className="fw-bold text-danger">
-                              Status :
-                            </span>{" "}
-                            <span className="badge bg-success">
+                          <div className="col-12 col-md-4">
+                            <span className="fw-bold">Status :</span>{" "}
+                            <span className="badge bg-dark">
                               {lead.status.charAt(0).toUpperCase() +
                                 lead.status.slice(1)}
                             </span>
-                          </p>
-                          <p className="mb-0" style={{ fontSize: "1.7rem" }}>
-                            <span
-                              className="fw-semibold"
-                              style={{ color: "blue" }}
-                            >
-                              Agent :
-                            </span>{" "}
+                          </div>
+
+                          <div className="col-12 col-md-4 text-md-end">
+                            <span className="fw-bold">Agent :</span>{" "}
                             {findAgent?.name || "Not Assigned"}
-                          </p>
+                          </div>
                         </div>
                       </div>
                     </Link>
