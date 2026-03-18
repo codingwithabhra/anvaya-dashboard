@@ -16,11 +16,11 @@ const Leaddetails = () => {
     <>
       {findLead && (
         <div>
-          <header className="bg-white text-center text-secondary py-3 shadow-sm">
-            <h1>Lead Management : {findLead.name}</h1>
+          <header className="bg-white text-center text-dark py-3 shadow-sm">
+            <h1 className="fs-4">Lead Management : {findLead.name}</h1>
 
             <button
-              className="btn btn-primary d-lg-none position-absolute top-50 start-0 translate-middle-y ms-3"
+              className="btn btn-primary d-lg-none position-absolute top-18 end-0 mx-2 my-2"
               data-bs-toggle="offcanvas"
               data-bs-target="#mobileSidebar"
             >
