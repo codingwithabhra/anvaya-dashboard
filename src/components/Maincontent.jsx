@@ -1,9 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useLeadContext } from "../contexts/useLeadContext";
+import { useFilterContext } from "../contexts/filterContext";
 
 const Maincontent = () => {
   const { leads } = useLeadContext();
+  const { filter, setFilter } = useFilterContext();
+
+  const filteredLeads = leads.filter((lead) => {
+    if (!filter.status) return true; // no filter → show all
+
+    return lead.status?.toLowerCase() === filter.status.toLowerCase();
+  });
 
   const statusCounts = leads.reduce((acc, lead) => {
     const status = lead.status?.toLowerCase() || "unknown";
@@ -29,37 +37,44 @@ const Maincontent = () => {
         <div className="newLeads bg-white px-3 py-4 rounded shadow-sm">
           <div className="container">
             <div className="row g-4">
-              {leads?.map((lead) => (
-                <Link
-                  className="col-lg-4 col-md-6 col-sm-12 text-decoration-none"
-                  key={lead._id}
-                  to={`/leads/leaddetails/${lead._id}`}
-                >
-                  <div className="card h-100 shadow-sm border-0 rounded-3" style={{backgroundColor: "#F0F8FF"}}>
-                    <div className="card-body">
-                      <h5 className="card-title fw-bold text-dark">
-                        {lead.name}
-                      </h5>
+              {filteredLeads.length === 0 ? (
+                <p>Leads are loading</p>
+              ) : (
+                filteredLeads?.map((lead) => (
+                  <Link
+                    className="col-lg-4 col-md-6 col-sm-12 text-decoration-none"
+                    key={lead._id}
+                    to={`/leads/leaddetails/${lead._id}`}
+                  >
+                    <div
+                      className="card h-100 shadow-sm border-0 rounded-3"
+                      style={{ backgroundColor: "#F0F8FF" }}
+                    >
+                      <div className="card-body">
+                        <h5 className="card-title fw-bold text-dark">
+                          {lead.name}
+                        </h5>
 
-                      <div className="d-flex gap-3">
-                        <p className="card-text mb-1">
-                          <span className="fw-semibold text-primary">
-                            Source:
-                          </span>{" "}
-                          <span className="text-secondary">Website</span>
-                        </p>
+                        <div className="d-flex gap-3">
+                          <p className="card-text mb-1">
+                            <span className="fw-semibold text-primary">
+                              Source:
+                            </span>{" "}
+                            <span className="text-secondary">Website</span>
+                          </p>
 
-                        <p className="card-text">
-                          <span className="fw-semibold text-danger">
-                            Status:
-                          </span>{" "}
-                          <span className="badge bg-success">New</span>
-                        </p>
+                          <p className="card-text">
+                            <span className="fw-semibold text-danger">
+                              Status:
+                            </span>{" "}
+                            <span className="badge bg-success">New</span>
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ))
+              )}
             </div>
           </div>
         </div>
@@ -94,7 +109,10 @@ const Maincontent = () => {
           <div className="buttons row g-3 py-3">
             {/* btn -new */}
             <div className="col-12 col-sm-4">
-              <Link className="btn-new d-flex align-items-center text-decoration-none">
+              <Link
+                onClick={() => setFilter({ ...filter, status: "new" })}
+                className="btn-new d-flex align-items-center text-decoration-none"
+              >
                 <img
                   src="/add.png"
                   alt="New"
@@ -106,7 +124,10 @@ const Maincontent = () => {
             </div>
             {/* btn -contacted */}
             <div className="col-12 col-sm-4">
-              <Link className="btn-new d-flex align-items-center text-decoration-none">
+              <Link
+                onClick={() => setFilter({ ...filter, status: "contacted" })}
+                className="btn-new d-flex align-items-center text-decoration-none"
+              >
                 <img
                   src="/help-desk.png"
                   alt="New"
