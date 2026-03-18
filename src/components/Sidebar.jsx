@@ -18,7 +18,7 @@ const Sidebar = () => {
             <li className="mb-4">
               <Link className="sidebar-link fs-5" to="/leads">
                 <img
-                  src="/public/add (3).png"
+                  src="/add (3).png"
                   alt=""
                   className="sidebar-icon"
                 />
@@ -28,7 +28,7 @@ const Sidebar = () => {
 
             <li className="mb-4">
               <Link className="sidebar-link fs-5" to="/leads/leadbystatus">
-                <img src="/public/arrow.png" alt="" className="sidebar-icon" />
+                <img src="/arrow.png" alt="" className="sidebar-icon" />
                 <span>Sales</span>
               </Link>
             </li>
@@ -36,7 +36,7 @@ const Sidebar = () => {
             <li className="mb-4">
               <Link className="sidebar-link fs-5" to="/leads/agents">
                 <img
-                  src="/public/people (1).png"
+                  src="/people (1).png"
                   alt=""
                   className="sidebar-icon"
                 />
@@ -47,7 +47,7 @@ const Sidebar = () => {
             <li className="mb-4">
               <Link className="sidebar-link fs-5" to="/leads/reports">
                 <img
-                  src="/public/analysis.png"
+                  src="/analysis.png"
                   alt=""
                   className="sidebar-icon"
                 />
@@ -58,7 +58,7 @@ const Sidebar = () => {
             <li className="mb-4">
               <Link className="sidebar-link fs-5" to="/settings">
                 <img
-                  src="/public/setting.png"
+                  src="/setting.png"
                   alt=""
                   className="sidebar-icon"
                 />

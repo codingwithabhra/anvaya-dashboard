@@ -96,7 +96,7 @@ const Maincontent = () => {
             <div className="col-12 col-sm-4">
               <Link className="btn-new d-flex align-items-center text-decoration-none">
                 <img
-                  src="/public/add.png"
+                  src="/add.png"
                   alt="New"
                   style={{ width: "25px" }}
                   className="me-2"
@@ -108,7 +108,7 @@ const Maincontent = () => {
             <div className="col-12 col-sm-4">
               <Link className="btn-new d-flex align-items-center text-decoration-none">
                 <img
-                  src="/public/help-desk.png"
+                  src="/help-desk.png"
                   alt="New"
                   style={{ width: "25px" }}
                   className="me-2"
@@ -123,7 +123,7 @@ const Maincontent = () => {
                 className="btn-new d-flex align-items-center text-decoration-none"
               >
                 <img
-                  src="/public/add (1).png"
+                  src="/add (1).png"
                   alt="New"
                   style={{ width: "25px" }}
                   className="me-2"
