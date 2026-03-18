@@ -17,7 +17,7 @@ const Sidebar2 = () => {
                 <ul className="list-unstyled text-center">
                   <li className="mb-4">
                     <Link className="sidebar-link text-decoration-none fs-5 w-100" to="/">
-                      <span><img src="/Images/left-arrow.png" alt="" style={{paddingRight: "5px"}}/></span> Back to Dashboard
+                      <span><img src="/public/left-arrow.png" alt="" style={{paddingRight: "5px"}}/></span> Back to Dashboard
                     </Link>
                   </li>
                 </ul>
