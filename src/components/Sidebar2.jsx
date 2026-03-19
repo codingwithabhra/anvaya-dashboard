@@ -7,7 +7,7 @@ const Sidebar2 = () => {
       <div
               className="sidebar d-flex flex-column p-4 text-white rounded"
               style={{
-                minHeight: "100vh",
+                height: "100%",
                 background: "#003153",
               }}
             >

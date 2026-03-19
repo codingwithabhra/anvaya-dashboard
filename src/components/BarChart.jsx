@@ -3,7 +3,7 @@ import { Bar } from "react-chartjs-2";
 
 const BarChart = ({ data, options }) => {
   return (
-    <div>
+    <div style={{ height: "300px"}}>
       {data && <Bar data={data} options={options} redraw />}
     </div>
   )

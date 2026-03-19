@@ -3,8 +3,8 @@ import { Pie } from "react-chartjs-2";
 
 const PieChart = ({data, options}) => {
   return (
-    <div>
-      {data && <Pie data={data} options={options}  />}
+    <div style={{ height: "300px"}}>
+      {data && <Pie data={data} options={options}  redraw />}
     </div>
   )
 }

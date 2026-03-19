@@ -1,248 +1,143 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { useLeadContext } from "../contexts/useLeadContext";
+import AddNewLead from "../components/AddNewLead";
+import Sidebar2 from "../components/Sidebar2";
 
 const Addnewlead = () => {
-  const { setLeads } = useLeadContext();
+  // const { setLeads } = useLeadContext();
 
-  const [name, setName] = useState("");
-  const [source, setSource] = useState("");
-  const [salesAgent, setSalesAgent] = useState("");
-  const [status, setStatus] = useState("");
-  const [priority, setPriority] = useState("");
-  const [timetoclose, settimetoclose] = useState("");
-  const [tags, setTags] = useState("");
-  const [formdata, setFormdata] = useState(false);
-  const [agents, setAgents] = useState([]);
+  // const [name, setName] = useState("");
+  // const [source, setSource] = useState("");
+  // const [salesAgent, setSalesAgent] = useState("");
+  // const [status, setStatus] = useState("");
+  // const [priority, setPriority] = useState("");
+  // const [timetoclose, settimetoclose] = useState("");
+  // const [tags, setTags] = useState([]);
+  // const [formdata, setFormdata] = useState(false);
+  // const [agents, setAgents] = useState([]);
 
-  useEffect(() => {
-    const fetchagents = async () => {
-      try {
-        const response = await axios.get(
-          "https://agent-three-pi.vercel.app/agent",
-        );
-        setAgents(response.data);
-        console.log("Responses are --", response);
-      } catch (error) {
-        console.error("Error fetching agents:", error);
-        toast.error("Failed to load sales agents");
-      }
-    };
-    fetchagents();
-  }, []);
+  // const tagOptions = ["hot", "cold", "urgent", "follow-up", "important"];
 
-  const handleform = async (e) => {
-    e.preventDefault();
+  // useEffect(() => {
+  //   const fetchagents = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://agent-three-pi.vercel.app/agent",
+  //       );
+  //       setAgents(response.data);
+  //       console.log("Responses are --", response);
+  //     } catch (error) {
+  //       console.error("Error fetching agents:", error);
+  //       toast.error("Failed to load sales agents");
+  //     }
+  //   };
+  //   fetchagents();
+  // }, []);
 
-    if (
-      name &&
-      source &&
-      salesAgent &&
-      status &&
-      priority &&
-      timetoclose &&
-      tags
-    ) {
-      try {
-        const response = await axios.post(
-          "https://leads-peach-rho.vercel.app/leads",
-          {
-            name,
-            source,
-            salesAgent,
-            status,
-            priority,
-            timetoclose,
-            tags,
-          },
-        );
-        
-        // Refetch fresh data
-        const updatedLeads = await axios.get(
-          "https://leads-peach-rho.vercel.app/leads",
-        );
+  // const handleform = async (e) => {
+  //   e.preventDefault();
 
-        setLeads(updatedLeads.data);
+  //   if (
+  //     name &&
+  //     source &&
+  //     salesAgent &&
+  //     status &&
+  //     priority &&
+  //     timetoclose &&
+  //     tags
+  //   ) {
+  //     try {
+  //       const response = await axios.post(
+  //         "https://leads-peach-rho.vercel.app/leads",
+  //         {
+  //           name,
+  //           source,
+  //           salesAgent,
+  //           status,
+  //           priority,
+  //           timetoclose,
+  //           tags,
+  //         },
+  //       );
 
-        console.log("Lead Created:", response.data);
+  //       // Refetch fresh data
+  //       const updatedLeads = await axios.get(
+  //         "https://leads-peach-rho.vercel.app/leads",
+  //       );
 
-        // Reset form after success
-        setName("");
-        setSource("");
-        setSalesAgent("");
-        setStatus("");
-        setPriority("");
-        settimetoclose("");
-        setTags("");
+  //       setLeads(updatedLeads.data);
 
-        toast.success("Lead Created Successfully");
-      } catch (error) {
-        console.error("Error creating lead:", error);
-        toast.error("Something went wrong ");
-      }
-    }
-  };
+  //       console.log("Lead Created:", response.data);
+
+  //       // Reset form after success
+  //       setName("");
+  //       setSource("");
+  //       setSalesAgent("");
+  //       setStatus("");
+  //       setPriority("");
+  //       settimetoclose("");
+  //       setTags("");
+
+  //       toast.success("Lead Created Successfully");
+  //     } catch (error) {
+  //       console.error("Error creating lead:", error);
+  //       toast.error("Something went wrong ");
+  //     }
+  //   }
+  // };
 
   return (
     <>
-      <div>
-        <div className="bg-white text-center text-secondary py-3 shadow-sm">
-          <h1>Add New Lead</h1>
+      {/* Header */}
+      <header className="bg-white py-3 position-relative">
+        <h1 className="fs-3 fw-bold text-center m-0">Add New Lead</h1>
+
+        {/* Toggle button (only visible on small screens) */}
+        <button
+          className="btn btn-primary d-lg-none position-absolute top-100 end-0 mx-2 my-2"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileSidebar"
+        >
+          ☰
+        </button>
+      </header>
+
+      {/* Sidebar Offcanvas (Mobile) */}
+      <div
+        className="offcanvas offcanvas-start d-lg-none"
+        tabIndex="-1"
+        id="mobileSidebar"
+        style={{ backgroundColor: "#003153" }}
+      >
+        <div className="offcanvas-header">
+          <button
+            type="button"
+            className="btn-close bg-white"
+            data-bs-dismiss="offcanvas"
+          ></button>
         </div>
-        <div className="container my-5">
-          <div
-            className="bg-white p-4 mx-auto rounded shadow-sm"
-            style={{ maxWidth: "1000px" }}
-          >
-            <form className="py-4 px-5" onSubmit={handleform}>
-              {/* LEAD NAME */}
-              <div className="row align-items-center pb-4">
-                <div className="col-md-4">
-                  <label className="form-label">Lead Name :</label>
-                </div>
-                <div className="col-md-8">
-                  <input
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    value={name}
-                  />
-                </div>
-              </div>
-
-              {/* LEAD SOURCE */}
-              <div className="row align-items-center pb-4">
-                <div className="col-md-4">
-                  <label className="form-label">Lead Source :</label>
-                </div>
-                <div className="col-md-8">
-                  <select
-                    className="form-select"
-                    onChange={(e) => setSource(e.target.value)}
-                    required
-                    value={source}
-                  >
-                    <option value="">Select Source</option>
-                    <option value="website">Website</option>
-                    <option value="referral">Referral</option>
-                    <option value="cold call">Cold Call</option>
-                    <option value="advertisement">Advertisement</option>
-                    <option value="email">Email</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* SALES AGENT */}
-              <div className="row align-items-center pb-4">
-                <div className="col-md-4">
-                  <label className="form-label">Sales Agent :</label>
-                </div>
-                <div className="col-md-8">
-                  <select
-                    className="form-select"
-                    onChange={(e) => setSalesAgent(e.target.value)}
-                    required
-                    value={salesAgent}
-                  >
-                    <option value="">Select Agent</option>
-                    {agents.map((agent) => (
-                      <option key={agent._id} value={agent._id}>
-                        {agent.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* LEAD STATUS */}
-              <div className="row align-items-center pb-4">
-                <div className="col-md-4">
-                  <label className="form-label">Lead Status :</label>
-                </div>
-                <div className="col-md-8">
-                  <select
-                    className="form-select"
-                    onChange={(e) => setStatus(e.target.value)}
-                    required
-                    value={status}
-                  >
-                    <option value="">Select Status</option>
-                    <option value="new">New</option>
-                    <option value="contacted">Contacted</option>
-                    <option value="qualified">Qualified</option>
-                    <option value="proposal sent">Proposal Sent</option>
-                    <option value="closed">Closed</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* PRIORITY */}
-              <div className="row align-items-center pb-4">
-                <div className="col-md-4">
-                  <label className="form-label">Priority :</label>
-                </div>
-                <div className="col-md-8">
-                  <select
-                    className="form-select"
-                    onChange={(e) => setPriority(e.target.value)}
-                    required
-                    value={priority}
-                  >
-                    <option value="">Select Priority</option>
-                    <option value="high">High</option>
-                    <option value="medium">Medium</option>
-                    <option value="low">Low</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* TIME TO CLOSE */}
-              <div className="row align-items-center pb-4">
-                <div className="col-md-4">
-                  <label className="form-label">Time to Close :</label>
-                </div>
-                <div className="col-md-8">
-                  <input
-                    type="number"
-                    className="form-control"
-                    placeholder="no of days"
-                    onChange={(e) => settimetoclose(e.target.value)}
-                    required
-                    value={timetoclose}
-                  />
-                </div>
-              </div>
-
-              {/* TAGS */}
-              <div className="row align-items-center">
-                <div className="col-md-4">
-                  <label className="form-label">Tags :</label>
-                </div>
-                <div className="col-md-8">
-                  <input
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => setTags(e.target.value)}
-                    required
-                    value={tags}
-                  />
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="d-block mx-auto mt-4 btn btn-primary py-2 px-4"
-              >
-                Create Lead
-              </button>
-            </form>
-          </div>
+        <div className="offcanvas-body">
+          <Sidebar2 />
         </div>
       </div>
+
+      {/* Desktop Layout */}
+      <main className="container-fluid mt-3">
+        <div className="row g-3">
+          {/* Sidebar (Desktop only) */}
+          <div className="col-lg-3 d-none d-lg-block">
+            <div className="rounded shadow-sm" style={{height: "100%", minHeight: "85vh"}}>
+              <Sidebar2 />
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="col-12 col-lg-9">
+            <div className="container">
+              <AddNewLead />
+            </div>
+          </div>
+        </div>
+      </main>
     </>
   );
 };

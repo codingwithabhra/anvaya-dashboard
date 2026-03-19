@@ -2,38 +2,19 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Sidebar2 from "../components/Sidebar2";
 
 const AddAgents = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [agents, setAgents] = useState([]);
-
-  useEffect(() => {
-    const fetchagents = async () => {
-      try {
-        const response = await axios.get(
-          "https://agent-omega-rosy.vercel.app/agent",
-        );
-        setAgents(response.data);
-        console.log("Responses are --", response);
-      } catch (error) {
-        console.error("Error fetching agents:", error);
-        toast.error("Failed to load sales agents");
-      }
-    };
-    fetchagents();
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-      name &&
-      email
-    ) {
+    if (name && email) {
       try {
         const response = await axios.post(
-          "https://agent-omega-rosy.vercel.app/agent",
+          "https://agent-three-pi.vercel.app/agent",
           {
             name: name,
             email: email,
@@ -56,56 +37,102 @@ const AddAgents = () => {
 
   return (
     <>
-      <div className="bg-white text-center text-secondary py-3 shadow-sm">
-        <h1>Add New Sales Agent</h1>
-      </div>
+      {/* Header */}
+      <header className="bg-white py-3 position-relative">
+        <h1 className="fs-3 fw-bold text-center m-0">Add New Sales Agent</h1>
 
-      <div className="container my-5">
-        <div
-          className="bg-white p-4 mx-auto rounded shadow-sm"
-          style={{ maxWidth: "1000px" }}
+        {/* Toggle button (only visible on small screens) */}
+        <button
+          className="btn btn-primary d-lg-none position-absolute top-100 end-0 mx-2 my-2"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileSidebar"
         >
-          <form className="py-4 px-5" onSubmit={handleSubmit}>
-            {/* LEAD NAME */}
-            <div className="row align-items-center pb-4">
-              <div className="col-md-4">
-                <label className="form-label">Agent Name :</label>
-              </div>
-              <div className="col-md-8">
-                <input
-                  type="text"
-                  className="form-control"
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  value={name}
-                />
-              </div>
-            </div>
+          ☰
+        </button>
+      </header>
 
-            {/* EMAIL */}
-            <div className="row align-items-center pb-4">
-              <div className="col-md-4">
-                <label className="form-label">Email :</label>
-              </div>
-              <div className="col-md-8">
-                <input
-                  type="text"
-                  className="form-control"
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  value={email}
-                />
-              </div>
-            </div>
-            <button
-              type="submit"
-              className="d-block mx-auto mt-4 btn btn-primary py-2 px-4"
-            >
-              Create Agent
-            </button>
-          </form>
+      {/* Sidebar Offcanvas (Mobile) */}
+      <div
+        className="offcanvas offcanvas-start d-lg-none"
+        tabIndex="-1"
+        id="mobileSidebar"
+        style={{ backgroundColor: "#003153" }}
+      >
+        <div className="offcanvas-header">
+          <button
+            type="button"
+            className="btn-close bg-white"
+            data-bs-dismiss="offcanvas"
+          ></button>
+        </div>
+        <div className="offcanvas-body">
+          <Sidebar2 />
         </div>
       </div>
+
+      {/* Desktop Layout */}
+      <main className="container-fluid mt-3">
+        <div className="row g-3">
+          {/* Sidebar (Desktop only) */}
+          <div className="col-lg-3 d-none d-lg-block">
+            <div className="rounded shadow-sm" style={{height: "100%", minHeight: "85vh"}}>
+              <Sidebar2 />
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="col-12 col-lg-9">
+            <div className="container">
+              <div className="bg-white p-4 mx-auto rounded shadow-sm">
+                <h2 className="text-secondary">Add Agent</h2>
+                <hr />
+
+                {/* FORM */}
+                <form className="py-5 px-5" onSubmit={handleSubmit}>
+                  {/* LEAD NAME */}
+                  <div className="row align-items-center pb-4">
+                    <div className="col-md-4">
+                      <label className="form-label">Agent Name :</label>
+                    </div>
+                    <div className="col-md-8">
+                      <input
+                        type="text"
+                        className="form-control"
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        value={name}
+                      />
+                    </div>
+                  </div>
+
+                  {/* EMAIL */}
+                  <div className="col-12 col-lg-9"></div>
+                  <div className="row align-items-center pb-4">
+                    <div className="col-md-4">
+                      <label className="form-label">Email :</label>
+                    </div>
+                    <div className="col-md-8">
+                      <input
+                        type="text"
+                        className="form-control"
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        value={email}
+                      />
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    className="d-block mx-auto mt-4 btn btn-primary py-2 px-4"
+                  >
+                    Create Agent
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </>
   );
 };

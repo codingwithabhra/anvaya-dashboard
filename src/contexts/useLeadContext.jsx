@@ -38,6 +38,7 @@ export const LeadsProvider = ({ children }) => {
           "https://agent-three-pi.vercel.app/agent",
         );
         setAgents(response.data);
+        
       } catch (error) {
         console.log("Error fetching agents -- ", error);
       }
@@ -100,7 +101,17 @@ export const LeadsProvider = ({ children }) => {
   };
 
   return (
-    <LeadContext.Provider value={{ leads, findLead, agents, updateLead, deleteLead, deleteAgent, setLeads  }}>
+    <LeadContext.Provider
+      value={{
+        leads,
+        findLead,
+        agents,
+        updateLead,
+        deleteLead,
+        deleteAgent,
+        setLeads,
+      }}
+    >
       {children}
     </LeadContext.Provider>
   );

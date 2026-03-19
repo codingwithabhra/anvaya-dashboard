@@ -21,7 +21,10 @@ const Maincontent = () => {
     return acc;
   }, {});
 
+  const totalLeads = leads.length;
+
   const statusList = [
+    "All",
     "New",
     "Contacted",
     "Qualified",
@@ -83,17 +86,22 @@ const Maincontent = () => {
         <div className="leadStatus bg-white my-3 p-3 rounded shadow-sm">
           <h2 className="text-secondary">Lead Status </h2>
           <hr />
-          <div className="status row g-3 py-2">
+          <div className="status row g-2 py-2">
             {statusList.map((status) => (
               <div
                 key={status}
                 className="col-12 col-md-4 text-decoration-none"
               >
-                <div className="d-flex align-items-center justify-content-between p-3 border rounded">
-                  <h5 className="mb-0 text-primary">{status} :</h5>
+                <div className="d-flex align-items-center justify-content-between p-2 border rounded shadow-sm">
+                  <h5 className="fs-6 mb-0 badge rounded-pill bg-warning text-dark">
+                    {status} :
+                  </h5>
 
-                  <p className="fs-5 mb-0">
-                    {statusCounts[status.toLowerCase()] || 0} Leads
+                  <p className="fs-6 mb-0">
+                    {status === "All"
+                      ? totalLeads
+                      : statusCounts[status.toLowerCase()] || 0}{" "}
+                    Leads
                   </p>
                 </div>
               </div>

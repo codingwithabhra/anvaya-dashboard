@@ -39,102 +39,151 @@ const LeadDetails = () => {
         <hr />
         {findLead && (
           <div className="container">
-            <div className="row justify-content-center shadow-sm" style={{backgroundColor: "#F0F8FF"}}>
-              <div className="col-md-6">
-                {" "}
-                {/* Controls width & centers horizontally */}
-                <div className="d-flex justify-content-between fs-6 mb-2">
-                  <strong>Lead Name:</strong>
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="form-control w-50"
-                    />
-                  ) : (
-                    <span className="fs-5">{formData.name}</span>
-                  )}
-                </div>
-                <div className="d-flex justify-content-between fs-6 mb-2">
-                  <strong>Sales Agent:</strong>
-                  {isEditing ? (
-                    <select
-                      name="salesAgent"
-                      value={formData.salesAgent}
-                      onChange={handleChange}
-                      className="form-control w-50"
-                    >
-                      {agents.map((agent) => {
-                        return (
-                          <option value={agent._id} key={agent._id}>
-                            {agent.name}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  ) : (
-                    <span className="fs-5">
-                      {agents.find((a) => a._id === formData.salesAgent)?.name}
-                    </span>
-                  )}
-                </div>
-                <div className="d-flex justify-content-between fs-6 mb-2">
-                  <strong>Lead Source:</strong>
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      name="source"
-                      value={formData.source || ""}
-                      onChange={handleChange}
-                      className="form-control w-50"
-                    />
-                  ) : (
-                    <span className="fs-5">{formData.source}</span>
-                  )}
-                </div>
-                <div className="d-flex justify-content-between fs-6 mb-2">
-                  <strong>Lead Status:</strong>
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      name="status"
-                      value={formData.status || ""}
-                      onChange={handleChange}
-                      className="form-control w-50"
-                    />
-                  ) : (
-                    <span className="fs-5">{formData.status}</span>
-                  )}
-                </div>
-                <div className="d-flex justify-content-between fs-6 mb-2">
-                  <strong>Priority:</strong>
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      name="priority"
-                      value={formData.priority || ""}
-                      onChange={handleChange}
-                      className="form-control w-50"
-                    />
-                  ) : (
-                    <span className="fs-5">{formData.priority}</span>
-                  )}
-                </div>
-                <div className="d-flex justify-content-between fs-6">
-                  <strong>Time to close:</strong>
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      name="timetoclose"
-                      value={formData.timetoclose || ""}
-                      onChange={handleChange}
-                      className="form-control w-50"
-                    />
-                  ) : (
-                    <span className="fs-5">{formData.timetoclose}</span>
-                  )}
+            <div className="shadow-sm" style={{ backgroundColor: "#F0F8FF" }}>
+              <div
+                className="row justify-content-center  d-block m-auto"
+                style={{ maxWidth: "600px" }}
+              >
+                <div className="col-12 py-3 d-block m-auto">
+                  {" "}
+                  {/* Controls width & centers horizontally */}
+                  <div className="row fs-6 mb-2">
+                    <div className="col-12 col-md-6">
+                      <strong>Lead Name:</strong>
+                    </div>
+                    <div className="col-12 col-md-6">
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          className="form-control w-60"
+                        />
+                      ) : (
+                        <span className="fs-6 badge bg-success">{formData.name}</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="row fs-6 mb-2">
+                    <div className="col-12 col-md-6">
+                      <strong>Sales Agent:</strong>
+                    </div>
+                    <div className="col-12 col-md-6">
+                      {isEditing ? (
+                        <select
+                          name="salesAgent"
+                          value={formData.salesAgent}
+                          onChange={handleChange}
+                          className="form-select w-60"
+                        >
+                          {agents.map((agent) => {
+                            return (
+                              <option value={agent._id} key={agent._id}>
+                                {agent.name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      ) : (
+                        <span className="fs-6 badge bg-success">
+                          {
+                            agents.find((a) => a._id === formData.salesAgent)
+                              ?.name
+                          }
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="row fs-6 mb-2">
+                    <div className="col-12 col-md-6">
+                      <strong>Lead Source:</strong>
+                    </div>
+                    <div className="col-12 col-md-6">
+                      {isEditing ? (
+                        <select
+                          name="source"
+                          className="form-select w-60"
+                          onChange={handleChange}
+                          value={formData.source || ""}
+                        >
+                          <option value="">Select Source</option>
+                          <option value="website">Website</option>
+                          <option value="referral">Referral</option>
+                          <option value="cold call">Cold Call</option>
+                          <option value="advertisement">Advertisement</option>
+                          <option value="email">Email</option>
+                          <option value="other">Other</option>
+                        </select>
+                      ) : (
+                        <span className="fs-6 badge bg-danger">{formData.source}</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="row fs-6 mb-2">
+                    <div className="col-12 col-md-6">
+                      <strong>Lead Status:</strong>
+                    </div>
+                    <div className="col-12 col-md-6">
+                      {isEditing ? (
+                        <select
+                          name="status"
+                          className="form-select w-60"
+                          onChange={handleChange}
+                          value={formData.status || ""}
+                        >
+                          <option value="">Select Status</option>
+                          <option value="new">New</option>
+                          <option value="contacted">Contacted</option>
+                          <option value="qualified">Qualified</option>
+                          <option value="proposal sent">Proposal Sent</option>
+                          <option value="closed">Closed</option>
+                        </select>
+                      ) : (
+                        <span className="fs-6">{formData.status}</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="row fs-6 mb-2">
+                    <div className="col-12 col-md-6">
+                      <strong>Priority:</strong>
+                    </div>
+                    <div className="col-12 col-md-6">
+                      {isEditing ? (
+                        <select
+                          className="form-select w-60"
+                          onChange={handleChange}
+                          name="priority"
+                          value={formData.priority || ""}
+                        >
+                          <option value="">Select Priority</option>
+                          <option value="high">High</option>
+                          <option value="medium">Medium</option>
+                          <option value="low">Low</option>
+                        </select>
+                      ) : (
+                        <span className="fs-6">{formData.priority}</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="row fs-6">
+                    <div className="col-12 col-md-6">
+                      <strong>Time to close:</strong>
+                    </div>
+                    <div className="col-12 col-md-6">
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          name="timetoclose"
+                          value={formData.timetoclose || ""}
+                          onChange={handleChange}
+                          className="form-control w-60"
+                        />
+                      ) : (
+                        <span className="fs-6">{formData.timetoclose}</span>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -36,3 +36,7 @@ Link {
     color: #191970;
     transform: translateX(6px);
 }
+
+canvas{
+    max-height: 500px;
+}

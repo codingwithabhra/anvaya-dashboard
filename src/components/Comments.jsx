@@ -89,13 +89,13 @@ const Comments = ({ leadId }) => {
           <h3 className="fs-4">Add New Comment</h3>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <input
-                type="text"
+              <textarea
                 className="form-control"
                 placeholder="Enter your comment here..."
                 value={commentText}
                 onChange={(e) => setCommentText(e.target.value)}
-              />
+                rows={2} // you can adjust height
+              ></textarea>
             </div>
             <div className="row g-2">
               {/* Sales Agent Filter */}
@@ -103,9 +103,7 @@ const Comments = ({ leadId }) => {
                 <select
                   className="form-select border-primary shadow-sm"
                   value={salesagent}
-                  onChange={(e) =>
-                    setSalesAgent(e.target.value)
-                  }
+                  onChange={(e) => setSalesAgent(e.target.value)}
                 >
                   <option value="">Sales Agent</option>
                   {agents.map((agent) => (

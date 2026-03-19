@@ -46,7 +46,7 @@ function App() {
         <div className="row g-3">
           {/* Sidebar (Desktop only) */}
           <div className="col-lg-3 d-none d-lg-block">
-            <div className="rounded shadow-sm">
+            <div className="h-100 rounded shadow-sm">
               <Sidebar />
             </div>
           </div>

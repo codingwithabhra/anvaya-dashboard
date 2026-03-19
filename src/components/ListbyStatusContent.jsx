@@ -67,15 +67,24 @@ const ListbyStatusContent = () => {
                       </div>
 
                       {/* Lead Name */}
-                      <div className="col-12 col-md-5">
-                        <span className="fw-semibold">Lead Name:</span>{" "}
+                      <div className="col-12 col-md-2 fw-bold">
                         {lead.name}
                       </div>
 
                       {/* Sales Agent */}
-                      <div className="col-12 col-md-5">
+                      <div className="col-12 col-md-4">
                         <span className="fw-semibold">Sales Agent:</span>{" "}
                         {agent?.name || "Not Assigned"}
+                      </div>
+
+                      {/* Priority + Time to close */}
+                      <div className="col-12 col-md-4">
+                        <span className="badge bg-danger">
+                          {lead.priority} priority
+                        </span>{" "}/{" "}
+                        <span className="badge bg-success">
+                          {lead.timetoclose} day(s) to close
+                        </span>
                       </div>
                     </div>
                   );
@@ -85,7 +94,10 @@ const ListbyStatusContent = () => {
           </div>
           <hr />
 
-          <div className="px-4 py-3 rounded shadow-sm" style={{backgroundColor: "#003153", color: "white"}}>
+          <div
+            className="px-4 py-3 rounded shadow-sm"
+            style={{ backgroundColor: "#003153", color: "white" }}
+          >
             {/* Filters Section */}
             <div
               className="row align-items-center mb-3 py-2 rounded"

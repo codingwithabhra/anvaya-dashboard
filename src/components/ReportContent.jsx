@@ -124,7 +124,7 @@ const ReportContent = () => {
             <div
               className="chart mx-auto my-2"
               style={{
-                width: "100%",
+                width: "500px",
                 maxWidth: "420px",
               }}
             >
@@ -132,7 +132,7 @@ const ReportContent = () => {
                 data={piedata}
                 options={{
                   responsive: true,
-                  maintainAspectRatio: true,
+                  maintainAspectRatio: false,
                   ...options,
                 }}
               />
@@ -174,7 +174,7 @@ const ReportContent = () => {
                 data={piedata2}
                 options={{
                   responsive: true,
-                  maintainAspectRatio: true,
+                  maintainAspectRatio: false,
                   ...options,
                 }}
               />
