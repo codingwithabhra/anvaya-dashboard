@@ -31,18 +31,18 @@ export const LeadsProvider = ({ children }) => {
   }, []);
 
   //getting all the agent info
+  const fetchAgents = async () => {
+    try {
+      const response = await axios.get(
+        "https://agent-three-pi.vercel.app/agent",
+      );
+      setAgents(response.data);
+    } catch (error) {
+      console.log("Error fetching agents -- ", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchAgents = async () => {
-      try {
-        const response = await axios.get(
-          "https://agent-three-pi.vercel.app/agent",
-        );
-        setAgents(response.data);
-        
-      } catch (error) {
-        console.log("Error fetching agents -- ", error);
-      }
-    };
     fetchAgents();
   }, []);
 
@@ -106,6 +106,8 @@ export const LeadsProvider = ({ children }) => {
         leads,
         findLead,
         agents,
+        setAgents,
+        fetchAgents,
         updateLead,
         deleteLead,
         deleteAgent,

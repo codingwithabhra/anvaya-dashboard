@@ -2,11 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Sidebar from "../components/Sidebar";
 import Sidebar2 from "../components/Sidebar2";
+import { useLeadContext } from "../contexts/useLeadContext";
 
 const AddAgents = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const { fetchAgents } = useLeadContext([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +23,9 @@ const AddAgents = () => {
             email: email,
           },
         );
+
+        //Refetch updated list
+        fetchAgents();
 
         console.log("Agent Created:", response.data);
 
@@ -66,7 +72,7 @@ const AddAgents = () => {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <Sidebar2 />
+          <Sidebar />
         </div>
       </div>
 
@@ -75,7 +81,10 @@ const AddAgents = () => {
         <div className="row g-3">
           {/* Sidebar (Desktop only) */}
           <div className="col-lg-3 d-none d-lg-block">
-            <div className="rounded shadow-sm" style={{height: "100%", minHeight: "85vh"}}>
+            <div
+              className="rounded shadow-sm"
+              style={{ height: "100%", minHeight: "85vh" }}
+            >
               <Sidebar2 />
             </div>
           </div>
@@ -113,7 +122,7 @@ const AddAgents = () => {
                     </div>
                     <div className="col-md-8">
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
                         onChange={(e) => setEmail(e.target.value)}
                         required

@@ -34,7 +34,7 @@ const LeadsByAgents = () => {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <Sidebar2 />
+          <Sidebar />
         </div>
       </div>
 

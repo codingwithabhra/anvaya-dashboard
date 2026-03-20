@@ -46,7 +46,7 @@ const AgentList = () => {
                               </span>
                               <span
                                 className="ms-sm-3"
-                                style={{ fontSize: "1rem" }}
+                                style={{ fontSize: "1rem", wordBreak: "break-all", overflowWrap: "break-word" }}
                               >
                                 {agent.email}
                               </span>

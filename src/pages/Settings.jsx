@@ -1,4 +1,5 @@
 import React from "react";
+import Sidebar from "../components/Sidebar";
 import Sidebar2 from "../components/Sidebar2";
 import CompleteLeadList from "../components/CompleteLeadList";
 import CompleteAgentList from "../components/CompleteAgentList";
@@ -34,7 +35,7 @@ const Settings = () => {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <Sidebar2 />
+          <Sidebar />
         </div>
       </div>
 

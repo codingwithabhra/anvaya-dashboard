@@ -25,13 +25,13 @@ const CompleteLeadList = () => {
                 >
                   {/* Left Section (Name + Source) */}
                   <div className="col-9 col-md-8">
-                    <div className="row">
+                    <div className="row align-items-center g-1">
                       {/* Lead Name */}
-                      <div className="col-12 col-md-6 mb-1 mb-md-0">
+                      <div className="col-12 col-md-6 mb-1 mb-md-0 g-1">
                         <span className="fw-semibold mx-2 badge bg-primary">
                           Lead Name :
                         </span>
-                        {lead.name}
+                        <span className="d-block d-md-inline text-break">{lead.name}</span>
                       </div>
 
                       {/* Lead Source */}

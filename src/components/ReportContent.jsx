@@ -123,10 +123,7 @@ const ReportContent = () => {
 
             <div
               className="chart mx-auto my-2"
-              style={{
-                width: "500px",
-                maxWidth: "420px",
-              }}
+              
             >
               <PieChart
                 data={piedata}

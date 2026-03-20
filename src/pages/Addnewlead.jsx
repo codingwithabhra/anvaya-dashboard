@@ -1,89 +1,9 @@
 import React from "react";
 import AddNewLead from "../components/AddNewLead";
 import Sidebar2 from "../components/Sidebar2";
+import Sidebar from "../components/Sidebar";
 
 const Addnewlead = () => {
-  // const { setLeads } = useLeadContext();
-
-  // const [name, setName] = useState("");
-  // const [source, setSource] = useState("");
-  // const [salesAgent, setSalesAgent] = useState("");
-  // const [status, setStatus] = useState("");
-  // const [priority, setPriority] = useState("");
-  // const [timetoclose, settimetoclose] = useState("");
-  // const [tags, setTags] = useState([]);
-  // const [formdata, setFormdata] = useState(false);
-  // const [agents, setAgents] = useState([]);
-
-  // const tagOptions = ["hot", "cold", "urgent", "follow-up", "important"];
-
-  // useEffect(() => {
-  //   const fetchagents = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "https://agent-three-pi.vercel.app/agent",
-  //       );
-  //       setAgents(response.data);
-  //       console.log("Responses are --", response);
-  //     } catch (error) {
-  //       console.error("Error fetching agents:", error);
-  //       toast.error("Failed to load sales agents");
-  //     }
-  //   };
-  //   fetchagents();
-  // }, []);
-
-  // const handleform = async (e) => {
-  //   e.preventDefault();
-
-  //   if (
-  //     name &&
-  //     source &&
-  //     salesAgent &&
-  //     status &&
-  //     priority &&
-  //     timetoclose &&
-  //     tags
-  //   ) {
-  //     try {
-  //       const response = await axios.post(
-  //         "https://leads-peach-rho.vercel.app/leads",
-  //         {
-  //           name,
-  //           source,
-  //           salesAgent,
-  //           status,
-  //           priority,
-  //           timetoclose,
-  //           tags,
-  //         },
-  //       );
-
-  //       // Refetch fresh data
-  //       const updatedLeads = await axios.get(
-  //         "https://leads-peach-rho.vercel.app/leads",
-  //       );
-
-  //       setLeads(updatedLeads.data);
-
-  //       console.log("Lead Created:", response.data);
-
-  //       // Reset form after success
-  //       setName("");
-  //       setSource("");
-  //       setSalesAgent("");
-  //       setStatus("");
-  //       setPriority("");
-  //       settimetoclose("");
-  //       setTags("");
-
-  //       toast.success("Lead Created Successfully");
-  //     } catch (error) {
-  //       console.error("Error creating lead:", error);
-  //       toast.error("Something went wrong ");
-  //     }
-  //   }
-  // };
 
   return (
     <>
@@ -116,7 +36,7 @@ const Addnewlead = () => {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <Sidebar2 />
+          <Sidebar />
         </div>
       </div>
 
