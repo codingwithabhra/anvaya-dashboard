@@ -70,70 +70,70 @@ Watch a walkthrough (5-7 minutes) of all the major features of this app : [Watch
 
 ## Api Reference
 
-### **GET/api/leads**<br>
+### **GET /api/leads**<br>
 Get all the leads info<br>
 Sample response:<br>
 ```
 [{_id, name, source, salesagent, status, tags, timetoclose, priority},...]
 ```
 
-### **POST/api/leads**<br>
+### **POST /api/leads**<br>
 To send new lead info to database<br>
 Sample response:<br>
 ```
 [{_id, name, source, salesagent, status, tags, timetoclose, priority},...]
 ```
 
-### **POST/api/leads/:leadId**<br>
+### **POST /api/leads/:leadId**<br>
 Update particular lead info<br>
 Sample response:<br>
 ```
 [{_id, name, source, salesagent, status, tags, timetoclose, priority},...]
 ```
 
-### **DELETE/api/leads/:leadId**<br>
+### **DELETE /api/leads/:leadId**<br>
 Delete particular lead info<br>
 Sample response:<br>
 ```
 [{_id, name, source, salesagent, status, tags, timetoclose, priority},...]
 ```
 
-### **GET/api/agent**<br>
+### **GET /api/agent**<br>
 Get all the agents info<br>
 Sample response:<br>
 ```
 [{_id, name, emai},...]
 ```
 
-### **POST/api/agent**<br>
+### **POST /api/agent**<br>
 To send agent info to database<br>
 Sample response:<br>
 ```
 [{_id, name, emai},...]
 ```
 
-### **DELETE/api/agent**<br>
+### **DELETE /api/agent**<br>
 Delete particular agent info<br>
 Sample response:<br>
 ```
 [{_id, name, emai},...]
 ```
 
-### **GET/api/comment**<br>
+### **GET /api/comment**<br>
 Get all the comments<br>
 Sample response:<br>
 ```
 [{_id, lead, author, commentText},...]
 ```
 
-### **POST/api/comment**<br>
+### **POST /api/comment**<br>
 To send comment to database<br>
 Sample response:<br>
 ```
 [{_id, lead, author, commentText},...]
 ```
 
-### **GET/api/comment/lead/:leadId**<br>
+### **GET /api/comment/lead/:leadId**<br>
 Get lead specific comments<br>
 Sample response:<br>
 ```
